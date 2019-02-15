@@ -11,23 +11,34 @@ namespace FileData
         {
             string action = null;
             string filename = null;
+            bool argsOK = true;
             bool taskExecutedOK = false;
 
             if (args.Length > 0)
             {
                 action = args[0];
             }
-            if (args.Length > 1)
+            else
+            {
+                argsOK = false;
+            }
+            if (args.Length > 1 && argsOK)
             {
                 filename = args[1];
             }
+            else
+            {
+                argsOK = false;
+            }
 
-            if (action == "-v" || action == "--v" || action == "/v" || action == "--version")
-                taskExecutedOK = GetVersion(filename);
+            if(argsOK)
+            { 
+                if (action == "-v" || action == "--v" || action == "/v" || action == "--version")
+                    taskExecutedOK = GetVersion(filename);
 
-            if (action == "-s" || action == "--s" || action == "/s" || action == "--size")
-                taskExecutedOK = GetSize(filename);
-
+                if (action == "-s" || action == "--s" || action == "/s" || action == "--size")
+                    taskExecutedOK = GetSize(filename);
+            }
 
             if (!taskExecutedOK)
             {
