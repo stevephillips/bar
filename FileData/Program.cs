@@ -14,7 +14,7 @@ namespace FileData
             bool argsOK = true;
             bool taskExecutedOK = false;
 
-            if (args.Length > 0)
+            if (args.Length > 0) // If there's no args at all we shouldn't process (ie: reset argsOK)
             {
                 action = args[0];
             }
@@ -22,16 +22,19 @@ namespace FileData
             {
                 argsOK = false;
             }
-            if (args.Length > 1 && argsOK)
-            {
+
+            if (args.Length > 1 && argsOK) // If there's no error with the action arg (0), and there's more than one argument get the value of that (filename)
+            { 
                 filename = args[1];
             }
-            else
+            else // If there's not a second arg then we shouldn't process (ie: reset argsOK)
             {
                 argsOK = false;
             }
 
-            if(argsOK)
+            // Don't know if there's a requirement to check for more than two arguments, spec is unclear
+
+            if(argsOK) // So if we've got the args okay proceed to do the action
             { 
                 if (action == "-v" || action == "--v" || action == "/v" || action == "--version")
                     taskExecutedOK = GetVersion(filename);
@@ -40,7 +43,7 @@ namespace FileData
                     taskExecutedOK = GetSize(filename);
             }
 
-            if (!taskExecutedOK)
+            if (!taskExecutedOK) // any errors returned by the action show an error
             {
                 Console.WriteLine("Error - Put information message here about usage etc");
             }
