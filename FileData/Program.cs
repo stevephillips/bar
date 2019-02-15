@@ -22,7 +22,7 @@ namespace FileData
                 filename = args[1];
             }
 
-            if (action == "-v" || action == "--v" || action == "/v")
+            if (action == "-v" || action == "--v" || action == "/v" || action == "--version")
                 taskExecutedOK = GetVersion(filename);
 
 
