@@ -22,6 +22,10 @@ namespace FileData
                 filename = args[1];
             }
 
+            if (!taskExecutedOK)
+            {
+                Console.WriteLine("Error - Put information message here about usage etc");
+            }
         }
     }
 }
