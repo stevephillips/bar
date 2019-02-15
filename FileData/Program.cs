@@ -30,11 +30,19 @@ namespace FileData
             }
         }
 
-        public static bool doVersion(string pFilename)
+        public static bool GetVersion(string pFilename)
         {
-            Console.WriteLine("Version of " + pFilename);
+            Console.WriteLine("Version of {0}", pFilename);
             FileDetails fileDetails = new FileDetails();
             Console.WriteLine(fileDetails.Version(pFilename));
+            return true;
+        }
+
+        public static bool GetSize(string pFilename)
+        {
+            Console.WriteLine("Size of {0}", pFilename);
+            FileDetails fileDetails = new FileDetails();
+            Console.WriteLine(fileDetails.Size(pFilename));
             return true;
         }
 
