@@ -35,3 +35,5 @@ echo Case fail 2
 CALL %testExe% s c:/test.txt
 echo Case fail 3
 CALL %testExe%
+echo Case fail 4
+CALL %testExe% -s

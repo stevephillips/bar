@@ -11,6 +11,8 @@ namespace FileData
         {
             string action = null;
             string filename = null;
+            bool taskExecutedOK = false;
+
             if (args.Length > 0)
             {
                 action = args[0];
