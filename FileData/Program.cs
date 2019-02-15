@@ -25,6 +25,9 @@ namespace FileData
             if (action == "-v" || action == "--v" || action == "/v" || action == "--version")
                 taskExecutedOK = GetVersion(filename);
 
+            if (action == "-s" || action == "--s" || action == "/s" || action == "--size")
+                taskExecutedOK = GetSize(filename);
+
 
             if (!taskExecutedOK)
             {
