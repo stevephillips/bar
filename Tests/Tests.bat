@@ -41,3 +41,7 @@ echo Case fail 3
 CALL %testExe%
 echo Case fail 4
 CALL %testExe% -s
+echo Case fail 5
+CALL %testExe% "C:\abc123.tx"
+echo Case fail 6
+CALL %testExe% --version
