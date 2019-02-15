@@ -14,6 +14,8 @@ CALL %testExe% --v c:/test.txt
 echo Case Version 3
 CALL %testExe% /v c:/test.txt
 echo Case Version 4
+CALL %testExe% --version c:/test.txt
+echo Case Version 5
 CALL %testExe% --v "c:/file/with spaces/in it.txt"
 
 echo.
@@ -25,6 +27,8 @@ echo Case Filesize 2
 CALL %testExe% --s c:/test.txt
 echo Case Filesize 3
 CALL %testExe% /s c:/test.txt
+echo Case Filesize 4
+CALL %testExe% --size c:/test.txt
 
 echo.
 
