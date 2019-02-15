@@ -16,7 +16,6 @@ CALL %testExe% /v c:/test.txt
 echo Case Version 4
 CALL %testExe% --v "c:/file/with spaces/in it.txt"
 
-:: If the second argument is anyone of –s, --s, /s, --size the return the size of the file (use FileDetails.Size)
 echo.
 
 :: If the second argument is anyone of –s, --s, /s, --size the return the size of the file (use FileDetails.Size)
@@ -27,6 +26,12 @@ CALL %testExe% --s c:/test.txt
 echo Case Filesize 3
 CALL %testExe% /s c:/test.txt
 
-
+echo.
 
 :: Some cases where it should gracefully fail
+echo Case fail 1
+CALL %testExe% s
+echo Case fail 2
+CALL %testExe% s c:/test.txt
+echo Case fail 3
+CALL %testExe%
