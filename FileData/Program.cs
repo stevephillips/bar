@@ -7,6 +7,8 @@ namespace FileData
 {
     public static class Program
     {
+        public enum ActionType { none, version, size };
+
         public static void Main(string[] args)
         {
             string action = null;
@@ -24,7 +26,7 @@ namespace FileData
             }
 
             if (args.Length > 1 && argsOK) // If there's no error with the action arg (0), and there's more than one argument get the value of that (filename)
-            { 
+            {
                 filename = args[1];
             }
             else // If there's not a second arg then we shouldn't process (ie: reset argsOK)
@@ -34,12 +36,13 @@ namespace FileData
 
             // Don't know if there's a requirement to check for more than two arguments, spec is unclear
 
-            if(argsOK) // So if we've got the args okay proceed to do the action
-            { 
-                if (action == "-v" || action == "--v" || action == "/v" || action == "--version")
+            if (argsOK) // So if we've got the args okay proceed to do the action
+            {
+                ActionType actionType = GetAction(action);
+                if (actionType == ActionType.version)
                     taskExecutedOK = GetVersion(filename);
 
-                if (action == "-s" || action == "--s" || action == "/s" || action == "--size")
+                if (actionType == ActionType.size)
                     taskExecutedOK = GetSize(filename);
             }
 
@@ -49,6 +52,18 @@ namespace FileData
             }
         }
 
+
+        public static ActionType GetAction(string pAction)
+        {
+            if (pAction == "-v" || pAction == "--v" || pAction == "/v" || pAction == "--version")
+                return ActionType.version;
+
+            if (pAction == "-s" || pAction == "--s" || pAction == "/s" || pAction == "--size")
+                return ActionType.size;
+
+            return ActionType.none;
+
+        }
         public static bool GetVersion(string pFilename)
         {
             Console.WriteLine("Version of {0}", pFilename);
