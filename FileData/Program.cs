@@ -13,29 +13,12 @@ namespace FileData
         {
             string action = null;
             string filename = null;
-            bool argsOK = true;
             bool taskExecutedOK = false;
 
-            if (args.Length > 0) // If there's no args at all we shouldn't process (ie: reset argsOK)
-            {
-                action = args[0];
-            }
-            else
-            {
-                argsOK = false;
-            }
+            ArgsManager argsManager = new ArgsManager(args);
+            bool argsOK = argsManager.ArgsOK;
 
-            if (args.Length > 1 && argsOK) // If there's no error with the action arg (0), and there's more than one argument get the value of that (filename)
-            {
-                filename = args[1];
-            }
-            else // If there's not a second arg then we shouldn't process (ie: reset argsOK)
-            {
-                argsOK = false;
-            }
-
-            // Don't know if there's a requirement to check for more than two arguments, spec is unclear
-
+            
             if (argsOK) // So if we've got the args okay proceed to do the action
             {
                 ActionType actionType = GetAction(action);
