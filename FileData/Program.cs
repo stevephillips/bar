@@ -11,22 +11,20 @@ namespace FileData
 
         public static void Main(string[] args)
         {
-            string action = null;
-            string filename = null;
             bool taskExecutedOK = false;
 
             ArgsManager argsManager = new ArgsManager(args);
             bool argsOK = argsManager.ArgsOK;
 
-            
             if (argsOK) // So if we've got the args okay proceed to do the action
             {
-                ActionType actionType = GetAction(action);
+                ActionType actionType = GetAction(argsManager.Action);
+
                 if (actionType == ActionType.version)
-                    taskExecutedOK = GetVersion(filename);
+                    taskExecutedOK = GetVersion(argsManager.Filename);
 
                 if (actionType == ActionType.size)
-                    taskExecutedOK = GetSize(filename);
+                    taskExecutedOK = GetSize(argsManager.Filename);
             }
 
             if (!taskExecutedOK) // any errors returned by the action show an error
@@ -45,7 +43,6 @@ namespace FileData
                 return ActionType.size;
 
             return ActionType.none;
-
         }
         public static bool GetVersion(string pFilename)
         {
