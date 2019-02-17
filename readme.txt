@@ -12,3 +12,5 @@ EXE [action] [filename]
 
 To run the tests open the file in Tests\Tests.bat and change the path to the executable to where it is on your machine, then just run the Test.bat
 
+There is another version using the Command Pattern (I think this is overkill for this test) on the branch:  VersionWithCommandPattern
+
